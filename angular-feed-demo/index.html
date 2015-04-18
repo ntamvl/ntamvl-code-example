@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app='feedModule'>
+<head>
+  <title>RSS Feeds</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-controller='FeedCtrl'>
+
+<!-- <pre>{{feeds}}</pre> -->
+
+<div ng-repeat="feed in feeds | orderBy:'title'">
+  <h2><a href="{{feed.link}}" target="_blank">{{feed.title}}</a></h2>
+  <p><span ng-repeat="item in feed.entries">
+    <a href="{{item.link}}" target="_blank">{{item.title}}</a> (<span>{{item.publishedDate | date:'d-MM-yyyy HH:mm'}}</span>)<br />
+    {{item.contentSnippet}} <br /><br />
+  </span></p>
+</div>
+
+<script src="feeds.js"></script>
+
+</body>
+</html>
